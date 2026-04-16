@@ -15,8 +15,18 @@
   <link rel="stylesheet" href="../../../ihe_pdi/res/jx.css" type=
   "text/css" />
   <style type="text/css">
-    a[target="Image"] img { cursor: pointer; border: 2px solid #ccc; transition: transform .2s ease, border-color .2s ease; }
-    a[target="Image"] img:hover { border-color: #888; transform: scale(1.03); }
+    body { margin: 0; padding: 0.8rem; font-family: Arial, sans-serif; background: #f6f7fb; color: #20232a; }
+    table { width: 100%; border-collapse: collapse; }
+    td { vertical-align: top; }
+    h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
+    p { margin: 0.6rem 0; line-height: 1.5; }
+    a { color: #0d6efd; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a[target="Image"] img { cursor: pointer; border: 2px solid #0047ab; transition: transform .2s ease, border-color .2s ease; width: 120px; height: auto; display: block; }
+    a[target="Image"] img:hover { border-color: #0056d6; transform: scale(1.02); }
+    font.nobr { display: inline-block; vertical-align: top; margin: 0.2rem 0.2rem 0.2rem 0; }
+    .content-list ul { padding-left: 0.85rem; margin: 0.5rem 0 1rem; }
+    .content-list li { margin-bottom: 0.75rem; }
     #lightboxOverlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; padding: 1rem; }
     #lightboxContent { position: relative; width: 100%; max-width: 1200px; max-height: 100%; overflow: hidden; border-radius: 0.5rem; background: #111; }
     #lightboxImage { width: 100%; height: auto; max-height: calc(100vh - 260px); display: block; margin: 0 auto; }
@@ -26,9 +36,22 @@
     .lightbox-nav button, #lightboxClose { background: #0d6efd; color: #fff; border: none; padding: 0.65rem 1rem; cursor: pointer; border-radius: 0.35rem; }
     #lightboxClose { position: absolute; top: 0.75rem; right: 0.75rem; width: 2.5rem; height: 2.5rem; font-size: 1.4rem; line-height: 1.3rem; background: rgba(255,255,255,0.12); }
     .lightbox-nav button:hover, #lightboxClose:hover { background: #025ce2; }
+    @media (max-width: 1024px) {
+      a[target="Image"] img { width: 100px; }
+    }
     @media (max-width: 768px) {
+      body { padding: 0.7rem; }
+      h3 { font-size: 1.2rem; }
+      a[target="Image"] img { width: 90px; }
+      font.nobr { width: 48%; }
       #lightboxInfo { font-size: 0.9rem; }
-      #lightboxImage { max-height: calc(100vh - 300px); }
+      #lightboxImage { max-height: calc(100vh - 340px); }
+    }
+    @media (max-width: 576px) {
+      a[target="Image"] img { width: 100%; max-width: 100%; }
+      font.nobr { width: 100%; }
+      #lightboxContent { max-width: 100%; }
+      #lightboxImage { max-height: calc(100vh - 260px); }
     }
   </style>
 </head>
