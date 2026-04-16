@@ -1,7 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-       
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
   <title>JiveX Image Report - Report</title>
   <meta http-equiv="pragma" content="no-cache" />
@@ -10,524 +11,610 @@
   <meta name="copyright" content="VISUS Health IT GmbH" />
   <meta name="DC.Publisher" content="VISUS Health IT GmbH" />
   <meta name="DC.Rights" content="VISUS Health IT GmbH" />
-  <link rel="stylesheet" href="../../../ihe_pdi/res/jx.css" type=
-  "text/css" />
+  <link rel="stylesheet" href="../../../ihe_pdi/res/jx.css" type="text/css" />
 
-<style type="text/css">
-/* ===== Enhanced responsive style ===== */
-:root{
-  --bg:#eef3fb;
-  --card:#ffffff;
-  --border:#d9e3f2;
-  --accent:#2e6edc;
-  --accent2:#224b9a;
-  --text:#23324d;
-  --muted:#65758f;
-}
-html{scroll-behavior:smooth;}
-body{
-  margin:0!important;
-  padding:24px 14px!important;
-  background:var(--bg)!important;
-  font-family:Tahoma, Arial, "Segoe UI", sans-serif!important;
-  color:var(--text)!important;
-}
-body > table{
-  width:min(1200px, 100%)!important;
-  margin:0 auto!important;
-  background:var(--card)!important;
-  border-radius:22px!important;
-  overflow:hidden!important;
-  box-shadow:0 10px 30px rgba(31,56,104,.08)!important;
-  border:1px solid var(--border)!important;
-}
-td, th, p, font, b, a, h1, h2, h3{
-  font-family:inherit!important;
-}
-a{
-  color:#1a5dd8;
-  text-decoration:none!important;
-}
-a:hover{text-decoration:underline!important;}
+  <style type="text/css">
+    /* ===== Enhanced responsive style ===== */
+    :root {
+      --bg: #eef3fb;
+      --card: #ffffff;
+      --border: #d9e3f2;
+      --accent: #2e6edc;
+      --accent2: #224b9a;
+      --text: #23324d;
+      --muted: #65758f;
+    }
 
-.top-actions{
-  position:fixed;
-  top:16px;
-  right:16px;
-  z-index:9999;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:999px;
-  padding:4px;
-  box-shadow:0 10px 22px rgba(0,0,0,.08);
-  display:flex;
-  gap:6px;
-}
-.top-actions button{
-  border:none;
-  background:transparent;
-  color:#52627a;
-  padding:9px 14px;
-  border-radius:999px;
-  font-weight:700;
-  cursor:pointer;
-}
-.top-actions button.active{
-  background:linear-gradient(135deg, var(--accent), var(--accent2));
-  color:#fff;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.cardlike{
-  background:#fff!important;
-  border:1px solid var(--border)!important;
-  border-radius:18px!important;
-  box-shadow:0 4px 20px rgba(31,56,104,.05)!important;
-}
+    body {
+      margin: 0 !important;
+      padding: 24px 14px !important;
+      background: var(--bg) !important;
+      font-family: Tahoma, Arial, "Segoe UI", sans-serif !important;
+      color: var(--text) !important;
+    }
 
-img{
-  max-width:100%;
-  height:auto;
-}
+    body>table {
+      width: min(1200px, 100%) !important;
+      margin: 0 auto !important;
+      background: var(--card) !important;
+      border-radius: 22px !important;
+      overflow: hidden !important;
+      box-shadow: 0 10px 30px rgba(31, 56, 104, .08) !important;
+      border: 1px solid var(--border) !important;
+    }
 
-/* General tables to feel cleaner */
-body table table{
-  border-collapse:separate;
-  border-spacing:0;
-}
-body table td{
-  vertical-align:top;
-}
-body table[summary=""], body table table[summary=""]{
-  width:100%!important;
-}
-body tr > td > table{
-  width:100%!important;
-}
+    td,
+    th,
+    p,
+    font,
+    b,
+    a,
+    h1,
+    h2,
+    h3 {
+      font-family: inherit !important;
+    }
 
-/* Headings */
-b font[size="+2"], font[size="+2"], h1, h2{
-  color:var(--text)!important;
-}
+    a {
+      color: #1a5dd8;
+      text-decoration: none !important;
+    }
 
-.small-muted{
-  color:var(--muted)!important;
-}
+    a:hover {
+      text-decoration: underline !important;
+    }
 
-/* Generic cards/boxes */
-table[border="0"][cellpadding="10"],
-table[border="0"][cellpadding="7"],
-table[border="0"][cellpadding="5"]{
-  width:100%!important;
-}
+    .top-actions {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 9999;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, .08);
+      display: flex;
+      gap: 6px;
+    }
 
-/* Study / series tables look cleaner */
-td[bgcolor], tr[bgcolor], table[bgcolor]{
-  border-radius:12px!important;
-}
+    .top-actions button {
+      border: none;
+      background: transparent;
+      color: #52627a;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+    }
 
-/* Image grid on study/overview pages */
-.thumb-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
-  gap:14px;
-}
-.thumb-item{
-  display:block;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:10px;
-  box-shadow:0 4px 12px rgba(0,0,0,.05);
-  text-align:center;
-}
-.thumb-item img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:contain;
-  background:#f7faff;
-  border-radius:10px;
-}
+    .top-actions button.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+    }
 
-/* Single image enhanced viewer */
-.image-viewer{
-  margin-top:16px;
-  width:100%;
-}
-.image-toolbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  flex-wrap:wrap;
-  margin:10px 0 14px;
-}
-.toolbar-group{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
-.nav-btn, .zoom-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:#fff;
-  color:var(--text)!important;
-  box-shadow:0 4px 12px rgba(42,74,125,.08);
-  padding:12px 18px;
-  font-weight:700;
-  transition:all .18s ease;
-  text-decoration:none!important;
-}
-.nav-btn{
-  background:linear-gradient(135deg, #2e6edc, #1b4ea8);
-  color:#fff!important;
-  min-width:120px;
-}
-.nav-btn:hover{
-  transform:translateY(-1px);
-  box-shadow:0 8px 18px rgba(29,69,157,.24);
-  text-decoration:none!important;
-}
-.zoom-btn{
-  min-width:44px;
-  padding:11px 14px;
-  font-size:16px;
-  cursor:pointer;
-}
-.zoom-btn:hover{
-  background:#f1f6ff;
-}
-.viewer-count{
-  font-size:18px;
-  font-weight:800;
-  color:var(--text);
-  margin:0 6px;
-}
-.image-stage{
-  width:100%;
-  min-height:clamp(420px,70vh,850px);
-  border:1px solid var(--border);
-  border-radius:18px;
-  background:#0f1115;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:auto;
-  padding:18px;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.02);
-}
-.image-stage img{
-  max-width:none;
-  max-height:none;
-  width:auto;
-  height:auto;
-  transform-origin:center center;
-  transition:transform .15s ease;
-  display:block;
-  background:#000;
-  border-radius:10px;
-  box-shadow:0 0 0 1px rgba(255,255,255,.07), 0 10px 30px rgba(0,0,0,.35);
-}
-.viewer-hint{
-  margin-top:8px;
-  color:#6b7a93;
-  font-size:13px;
-}
-.thumb-strip{
-  margin-top:18px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(96px,1fr));
-  gap:10px;
-}
-.thumb-strip a{
-  display:block;
-  padding:7px;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:12px;
-  box-shadow:0 3px 10px rgba(0,0,0,.04);
-}
-.thumb-strip a.active{
-  border-color:#2e6edc;
-  box-shadow:0 0 0 2px rgba(46,110,220,.15);
-}
-.thumb-strip img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:contain;
-  background:#f6f9ff;
-  border-radius:8px;
-}
+    .cardlike {
+      background: #fff !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 18px !important;
+      box-shadow: 0 4px 20px rgba(31, 56, 104, .05) !important;
+    }
 
-/* Remove old tables once enhanced */
-.enhanced-hidden{
-  display:none!important;
-}
+    img {
+      max-width: 100%;
+      height: auto;
+    }
 
-/* Responsive */
-@media (max-width: 800px){
-  body{padding:12px 6px!important;}
-  body > table{border-radius:16px!important;}
-  .image-toolbar{
-    flex-direction:column;
-    align-items:stretch;
-  }
-  .toolbar-group{
-    justify-content:center;
-  }
-  .nav-btn{
-    flex:1 1 auto;
-    min-width:0;
-  }
-  .image-stage{
-    min-height:320px;
-    padding:8px;
-  }
-  .viewer-count{
-    font-size:16px;
-    text-align:center;
-    width:100%;
-  }
-  .thumb-strip{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-  }
-}
+    /* General tables to feel cleaner */
+    body table table {
+      border-collapse: separate;
+      border-spacing: 0;
+    }
 
-[dir="rtl"] .top-actions{
-  right:auto;
-  left:16px;
-}
-[dir="rtl"] .image-toolbar{
-  direction:rtl;
-}
-[dir="rtl"] .toolbar-group{
-  direction:rtl;
-}
-</style>
+    body table td {
+      vertical-align: top;
+    }
 
-<script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function(){
-  injectLanguageToggle();
-  enhanceSingleImagePages();
-  enhanceMobileGrids();
-  applyStoredLanguage();
-});
+    body table[summary=""],
+    body table table[summary=""] {
+      width: 100% !important;
+    }
 
-function injectLanguageToggle(){
-  if(document.querySelector('.top-actions')) return;
-  var box = document.createElement('div');
-  box.className = 'top-actions';
-  box.innerHTML = '<button type="button" data-lang="en">EN</button><button type="button" data-lang="ar">AR</button>';
-  document.body.appendChild(box);
-  box.querySelectorAll('button').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var lang = this.getAttribute('data-lang');
-      localStorage.setItem('jx_lang', lang);
-      applyLanguage(lang);
-    });
-  });
-}
+    body tr>td>table {
+      width: 100% !important;
+    }
 
-function applyStoredLanguage(){
-  applyLanguage(localStorage.getItem('jx_lang') || 'en');
-}
+    /* Headings */
+    b font[size="+2"],
+    font[size="+2"],
+    h1,
+    h2 {
+      color: var(--text) !important;
+    }
 
-function applyLanguage(lang){
-  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-  document.documentElement.setAttribute('lang', lang === 'ar' ? 'ar' : 'en');
+    .small-muted {
+      color: var(--muted) !important;
+    }
 
-  var dict = {
-    'JiveX Review': {ar:'مراجعة JiveX', en:'JiveX Review'},
-    'Image Report': {ar:'تقرير الصور', en:'Image Report'},
-    'Study Layout': {ar:'عرض الدراسة', en:'Study Layout'},
-    'Single Image Layout': {ar:'عرض الصورة الواحدة', en:'Single Image Layout'},
-    'Image Series Layout': {ar:'عرض سلسلة الصور', en:'Image Series Layout'},
-    'Index': {ar:'الفهرس', en:'Index'},
-    'Patient:': {ar:'المريض:', en:'Patient:'},
-    'Study Description:': {ar:'وصف الدراسة:', en:'Study Description:'},
-    'Image Series:': {ar:'سلسلة الصور:', en:'Image Series:'},
-    'Previous': {ar:'السابق', en:'Previous'},
-    'Next': {ar:'التالي', en:'Next'},
-    'Click the image or use the buttons to zoom in and out.': {ar:'انقر على الصورة أو استخدم الأزرار للتقريب والإبعاد.', en:'Click the image or use the buttons to zoom in and out.'}
-  };
+    /* Generic cards/boxes */
+    table[border="0"][cellpadding="10"],
+    table[border="0"][cellpadding="7"],
+    table[border="0"][cellpadding="5"] {
+      width: 100% !important;
+    }
 
-  function convertText(txt){
-    var t = txt;
-    Object.keys(dict).forEach(function(key){
-      if(t.trim() === key){
-        t = dict[key][lang];
+    /* Study / series tables look cleaner */
+    td[bgcolor],
+    tr[bgcolor],
+    table[bgcolor] {
+      border-radius: 12px !important;
+    }
+
+    /* Image grid on study/overview pages */
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+    }
+
+    .thumb-item {
+      display: block;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
+      text-align: center;
+    }
+
+    .thumb-item img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      background: #f7faff;
+      border-radius: 10px;
+    }
+
+    /* Single image enhanced viewer */
+    .image-viewer {
+      margin-top: 16px;
+      width: 100%;
+    }
+
+    .image-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 10px 0 14px;
+    }
+
+    .toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn,
+    .zoom-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--text) !important;
+      box-shadow: 0 4px 12px rgba(42, 74, 125, .08);
+      padding: 12px 18px;
+      font-weight: 700;
+      transition: all .18s ease;
+      text-decoration: none !important;
+    }
+
+    .nav-btn {
+      background: linear-gradient(135deg, #2e6edc, #1b4ea8);
+      color: #fff !important;
+      min-width: 120px;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(29, 69, 157, .24);
+      text-decoration: none !important;
+    }
+
+    .zoom-btn {
+      min-width: 44px;
+      padding: 11px 14px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .zoom-btn:hover {
+      background: #f1f6ff;
+    }
+
+    .viewer-count {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      margin: 0 6px;
+    }
+
+    .image-stage {
+      width: 100%;
+      min-height: clamp(420px, 70vh, 850px);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #0f1115;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      padding: 18px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .02);
+    }
+
+    .image-stage img {
+      max-width: none;
+      max-height: none;
+      width: auto;
+      height: auto;
+      transform-origin: center center;
+      transition: transform .15s ease;
+      display: block;
+      background: #000;
+      border-radius: 10px;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, .07), 0 10px 30px rgba(0, 0, 0, .35);
+    }
+
+    .viewer-hint {
+      margin-top: 8px;
+      color: #6b7a93;
+      font-size: 13px;
+    }
+
+    .thumb-strip {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+      gap: 10px;
+    }
+
+    .thumb-strip a {
+      display: block;
+      padding: 7px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, .04);
+    }
+
+    .thumb-strip a.active {
+      border-color: #2e6edc;
+      box-shadow: 0 0 0 2px rgba(46, 110, 220, .15);
+    }
+
+    .thumb-strip img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      background: #f6f9ff;
+      border-radius: 8px;
+    }
+
+    /* Remove old tables once enhanced */
+    .enhanced-hidden {
+      display: none !important;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      body {
+        padding: 12px 6px !important;
       }
-    });
-    t = t.replace(/<<\s*Previous\s*\|?/ig, lang === 'ar' ? 'السابق <<' : '<< Previous');
-    t = t.replace(/\|?\s*Next\s*>>/ig, lang === 'ar' ? 'التالي >>' : 'Next >>');
-    t = t.replace(/Image\s+(\d+)\s+of\s+(\d+)/ig, function(_,a,b){
-      return lang === 'ar' ? 'الصورة ' + a + ' من ' + b : 'Image ' + a + ' of ' + b;
-    });
-    return t;
-  }
 
-  function walk(node){
-    if(node.nodeType === 3){
-      var original = node.nodeValue;
-      var converted = convertText(original);
-      if(converted !== original) node.nodeValue = converted;
-    } else if(node.nodeType === 1 && !['SCRIPT','STYLE'].includes(node.tagName)){
-      Array.prototype.forEach.call(node.childNodes, walk);
+      body>table {
+        border-radius: 16px !important;
+      }
+
+      .image-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .toolbar-group {
+        justify-content: center;
+      }
+
+      .nav-btn {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      .image-stage {
+        min-height: 320px;
+        padding: 8px;
+      }
+
+      .viewer-count {
+        font-size: 16px;
+        text-align: center;
+        width: 100%;
+      }
+
+      .thumb-strip {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
-  }
-  walk(document.body);
 
-  var buttons = document.querySelectorAll('.top-actions button');
-  buttons.forEach(function(btn){
-    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-  });
-}
-
-function enhanceSingleImagePages(){
-  var img = document.querySelector('img.texttop, img[alt="Image"]');
-  if(!img) return;
-
-  var pageText = document.body.textContent || '';
-  var countMatch = pageText.match(/Image\s+(\d+)\s+of\s+(\d+)/i);
-  var current = countMatch ? parseInt(countMatch[1],10) : 1;
-  var total = countMatch ? parseInt(countMatch[2],10) : 1;
-
-  var links = Array.prototype.slice.call(document.querySelectorAll('a'));
-  var prevLink = links.find(function(a){ return /Previous/i.test(a.textContent); });
-  var nextLink = links.find(function(a){ return /Next/i.test(a.textContent); });
-
-  var oldTable = img.closest('table');
-  while(oldTable && oldTable.parentElement && oldTable.parentElement.tagName !== 'TD' && oldTable.parentElement.tagName !== 'BODY'){
-    oldTable = oldTable.parentElement.closest('table') || oldTable;
-    break;
-  }
-  var host = oldTable && oldTable.parentElement ? oldTable.parentElement : img.parentElement;
-
-  if(oldTable) oldTable.classList.add('enhanced-hidden');
-
-  var viewer = document.createElement('div');
-  viewer.className = 'image-viewer';
-
-  var toolbar = document.createElement('div');
-  toolbar.className = 'image-toolbar';
-
-  var navLeft = document.createElement('div');
-  navLeft.className = 'toolbar-group';
-
-  var prevA = document.createElement('a');
-  prevA.className = 'nav-btn prev-btn';
-  prevA.href = prevLink ? prevLink.getAttribute('href') : '#';
-  prevA.innerHTML = '&#8592; <span data-i18n="Previous">Previous</span>';
-  if(!prevLink) prevA.style.visibility='hidden';
-
-  var nextA = document.createElement('a');
-  nextA.className = 'nav-btn next-btn';
-  nextA.href = nextLink ? nextLink.getAttribute('href') : '#';
-  nextA.innerHTML = '<span data-i18n="Next">Next</span> &#8594;';
-  if(!nextLink) nextA.style.visibility='hidden';
-
-  var count = document.createElement('div');
-  count.className = 'viewer-count';
-  count.textContent = 'Image ' + current + ' of ' + total;
-
-  var tools = document.createElement('div');
-  tools.className = 'toolbar-group';
-
-  var zin = document.createElement('button');
-  zin.type = 'button';
-  zin.className = 'zoom-btn';
-  zin.textContent = '+';
-
-  var zout = document.createElement('button');
-  zout.type = 'button';
-  zout.className = 'zoom-btn';
-  zout.textContent = '−';
-
-  var reset = document.createElement('button');
-  reset.type = 'button';
-  reset.className = 'zoom-btn';
-  reset.textContent = '100%';
-
-  tools.appendChild(zin);
-  tools.appendChild(zout);
-  tools.appendChild(reset);
-
-  navLeft.appendChild(prevA);
-  navLeft.appendChild(count);
-  navLeft.appendChild(nextA);
-
-  toolbar.appendChild(navLeft);
-  toolbar.appendChild(tools);
-
-  var stage = document.createElement('div');
-  stage.className = 'image-stage';
-  var bigImg = img.cloneNode(true);
-  bigImg.removeAttribute('width');
-  bigImg.removeAttribute('height');
-  bigImg.style.maxWidth = '100%';
-  bigImg.style.maxHeight = '100%';
-  stage.appendChild(bigImg);
-
-  var hint = document.createElement('div');
-  hint.className = 'viewer-hint';
-  hint.textContent = 'Click the image or use the buttons to zoom in and out.';
-
-  var strip = document.createElement('div');
-  strip.className = 'thumb-strip';
-
-  for(var i=1;i<=total;i++){
-    var n = String(i).padStart(6,'0');
-    var a = document.createElement('a');
-    a.href = 'im' + n + '.htm#imp';
-    if(i===current) a.classList.add('active');
-    var t = document.createElement('img');
-    t.loading = 'lazy';
-    t.src = 'im' + n + '.jpg';
-    t.alt = 'Image ' + i;
-    a.appendChild(t);
-    strip.appendChild(a);
-  }
-
-  viewer.appendChild(toolbar);
-  viewer.appendChild(stage);
-  viewer.appendChild(hint);
-  viewer.appendChild(strip);
-  host.appendChild(viewer);
-
-  var scale = 1;
-  function setScale(s){
-    scale = Math.max(0.5, Math.min(6, s));
-    bigImg.style.transform = 'scale(' + scale + ')';
-  }
-  zin.addEventListener('click', function(){ setScale(scale + 0.2); });
-  zout.addEventListener('click', function(){ setScale(scale - 0.2); });
-  reset.addEventListener('click', function(){ setScale(1); });
-  bigImg.addEventListener('click', function(){ setScale(scale >= 2 ? 1 : scale + 0.5); });
-  stage.addEventListener('wheel', function(e){
-    e.preventDefault();
-    setScale(scale + (e.deltaY < 0 ? 0.15 : -0.15));
-  }, {passive:false});
-}
-
-function enhanceMobileGrids(){
-  // On overview / study pages where many linked images appear, make them look like a grid on small screens.
-  var allImageLinks = Array.prototype.slice.call(document.querySelectorAll('a img'));
-  if(!allImageLinks.length) return;
-  var containers = [];
-  allImageLinks.forEach(function(img){
-    var a = img.parentElement;
-    if(!a || !a.getAttribute('href')) return;
-    if(/im\d+\.htm/i.test(a.getAttribute('href'))){
-      var td = a.closest('td');
-      if(td && containers.indexOf(td.parentElement) === -1) containers.push(td.parentElement);
+    [dir="rtl"] .top-actions {
+      right: auto;
+      left: 16px;
     }
-  });
-}
-</script>
+
+    [dir="rtl"] .image-toolbar {
+      direction: rtl;
+    }
+
+    [dir="rtl"] .toolbar-group {
+      direction: rtl;
+    }
+  </style>
+
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+      injectLanguageToggle();
+      enhanceSingleImagePages();
+      enhanceMobileGrids();
+      applyStoredLanguage();
+    });
+
+    function injectLanguageToggle() {
+      if (document.querySelector('.top-actions')) return;
+      var box = document.createElement('div');
+      box.className = 'top-actions';
+      box.innerHTML = '<button type="button" data-lang="en">EN</button><button type="button" data-lang="ar">AR</button>';
+      document.body.appendChild(box);
+      box.querySelectorAll('button').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var lang = this.getAttribute('data-lang');
+          localStorage.setItem('jx_lang', lang);
+          applyLanguage(lang);
+        });
+      });
+    }
+
+    function applyStoredLanguage() {
+      applyLanguage(localStorage.getItem('jx_lang') || 'en');
+    }
+
+    function applyLanguage(lang) {
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      document.documentElement.setAttribute('lang', lang === 'ar' ? 'ar' : 'en');
+
+      var dict = {
+        'JiveX Review': { ar: 'مراجعة JiveX', en: 'JiveX Review' },
+        'Image Report': { ar: 'تقرير الصور', en: 'Image Report' },
+        'Study': { ar: 'الدراسة', en: 'Study' },
+        'Study Layout': { ar: 'عرض الدراسة', en: 'Study Layout' },
+        'Single Image Layout': { ar: 'عرض الصورة الواحدة', en: 'Single Image Layout' },
+        'Image Series Layout': { ar: 'عرض سلسلة الصور', en: 'Image Series Layout' },
+        'Index': { ar: 'الفهرس', en: 'Index' },
+        'Patient:': { ar: 'المريض:', en: 'Patient:' },
+        'Study Description:': { ar: 'وصف الدراسة:', en: 'Study Description:' },
+        'Study Date:': { ar: 'تاريخ الدراسة:', en: 'Study Date:' },
+        'Referring Physician:': { ar: 'الطبيب المحيل:', en: 'Referring Physician:' },
+        'Report:': { ar: 'التقرير:', en: 'Report:' },
+        'Printer version': { ar: 'نسخة للطباعة', en: 'Printer version' },
+        'Report': { ar: 'التقرير', en: 'Report' },
+        'Medical Imaging Department': { ar: 'قسم التصوير الطبي', en: 'Medical Imaging Department' },
+        'Final Report': { ar: 'التقرير النهائي', en: 'Final Report' },
+        'Clinical History:': { ar: 'التاريخ المرضي:', en: 'Clinical History:' },
+        '61-year-old female of Lumbar and other intervertebral disc disorders with radiculopathy (G55.1*), presented with . Reason for Examination: History LBP + Lt sciatica': { ar: 'أنثى تبلغ من العمر 61 عامًا من اضطرابات الفقرات القطنية والأقراص بين الفقرات مع اعتلال جذور عصبية (G55.1*)، قدمت مع . سبب الفحص: تاريخ من ألم أسفل الظهر + ألم عصب الورك الأيسر', en: '61-year-old female of Lumbar and other intervertebral disc disorders with radiculopathy (G55.1*), presented with . Reason for Examination: History LBP + Lt sciatica' },
+        'Interpretation:': { ar: 'التفسير:', en: 'Interpretation:' },
+        'Mri Lumbar Spine': { ar: 'تصوير بالرنين المغناطيسي للعمود الفقري القطني', en: 'Mri Lumbar Spine' },
+        'Findings:': { ar: 'النتائج:', en: 'Findings:' },
+        'Lumbar spondylo-degenerative changes showing multilevel mild osteophytic formations, degeneration of inter-vertebral discs, evident with reduced T2 signals and narrowing of L4-L4 disc height & related mild subchondral degenerative marrow changes noted (Modic type II).': { ar: 'تغيرات تنكسية في العمود القطني تُظهر تكلسات عظمية طفيفة متعددة المستويات، وتدهور الأقراص بين الفقرات، واضح مع إشارات منخفضة على T2 وتضيق في ارتفاع القرص بين L4-L4 وتغيّرات نخاعية تحت الغضروف تنكسية طفيفة ملحوظة (موديك النوع الثاني).', en: 'Lumbar spondylo-degenerative changes showing multilevel mild osteophytic formations, degeneration of inter-vertebral discs, evident with reduced T2 signals and narrowing of L4-L4 disc height & related mild subchondral degenerative marrow changes noted (Modic type II).' },
+        'L4-5 left posterolateral disc protrusion on top of mild diffuse bulge seen with mild compression of the thecal sac and corresponding left nerve root. Evidence of left sided laminectomy at L4-5, with suspicious scarring in the left lateral recess.': { ar: 'بروز قرصي خلفي جانبي أيسر في L4-5 فوق انتفاخ منتشر طفيف، مع ضغط طفيف على الكيس السحائي والجذر العصبي الأيسر المقابل. دلائل على استئصال الصفيحة الشوكية في الجانب الأيسر في L4-5، مع تندب مريب في الأخدود الجانبي الأيسر.', en: 'L4-5 left posterolateral disc protrusion on top of mild diffuse bulge seen with mild compression of the thecal sac and corresponding left nerve root. Evidence of left sided laminectomy at L4-5, with suspicious scarring in the left lateral recess.' },
+        'Minimal L3-4 posterior disc bulge, slightly indenting ventral aspect of thecal sac.': { ar: 'انتفاخ قرصي خلفي طفيف في L3-4، يضغط قليلاً على الجانب البطني للكيس السحائي.', en: 'Minimal L3-4 posterior disc bulge, slightly indenting ventral aspect of thecal sac.' },
+        'Mild L5-S1 posterior disc bulge, more towards the left side, slightly encroaching on left neural recess with minimal thecal sac indentation.': { ar: 'انتفاخ قرصي خلفي خفيف في L5-S1، باتجاه الجانب الأيسر بشكل أكبر، مع تضيّق طفيف في الأخدود العصبي الأيسر وانخساف طفيف للكيس السحائي.', en: 'Mild L5-S1 posterior disc bulge, more towards the left side, slightly encroaching on left neural recess with minimal thecal sac indentation.' },
+        'Multilevel mild degenerative facet arthropathy seen.': { ar: 'لوحظ اعتلال مفصلي تنكسي خفيف متعدد المستويات.', en: 'Multilevel mild degenerative facet arthropathy seen.' },
+        'Straightening of the lumbar curve with preserved alignment. Maintained vertebral bodies height. No evidence of fracture or subluxation.': { ar: 'استقامة في تقوس العمود الفقري القطني مع حفظ المحاذاة. ارتفاع الأجسام الفقارية محفوظ. لا دليل على كسر أو خلع جزئي.', en: 'Straightening of the lumbar curve with preserved alignment. Maintained vertebral bodies height. No evidence of fracture or subluxation.' },
+        'Normal signal intensity of the scanned part of the spinal cord. The conus medullaris is unremarkable.': { ar: 'شدة إشارة طبيعية للجزء المصور من الحبل الشوكي. المخروط الشوكي غير ملحوظ.', en: 'Normal signal intensity of the scanned part of the spinal cord. The conus medullaris is unremarkable.' },
+        'No paraspinal soft tissue abnormalities detected.': { ar: 'لم يتم الكشف عن أي شذوذ في الأنسجة الرخوة حول العمود الفقري.', en: 'No paraspinal soft tissue abnormalities detected.' },
+        'Conclusion:': { ar: 'الخاتمة:', en: 'Conclusion:' },
+        'Spondylo-degenerative changes of lumbar spine with multilevel degenerative disc disease (most significant at L4-5), as described. Evidence of left sided laminectomy at L4-5, with suspicious scarring in the left lateral recess.': { ar: 'تغيرات تنكسية في العمود الفقري القطني مع مرض القرص التنكسي متعدد المستويات (الأكثر وضوحًا في L4-5)، كما هو موضح. دلائل على استئصال الصفيحة الشوكية في الجانب الأيسر في L4-5، مع تندب مريب في الأخدود الجانبي الأيسر.', en: 'Spondylo-degenerative changes of lumbar spine with multilevel degenerative disc disease (most significant at L4-5), as described. Evidence of left sided laminectomy at L4-5, with suspicious scarring in the left lateral recess.' },
+        'Recommendation:': { ar: 'التوصية:', en: 'Recommendation:' },
+        'Dr. Alaa Abdelgaber Ayad': { ar: 'د. علاء عبد الجابر عياد', en: 'Dr. Alaa Abdelgaber Ayad' },
+        'Notes* Radiology Department will not be held responsible for any unsigned Reports.': { ar: 'ملاحظات* قسم الأشعة لن يكون مسؤولاً عن أي تقارير غير موقعة.', en: 'Notes* Radiology Department will not be held responsible for any unsigned Reports.' },
+        'BDF-RMS Radiology 12/04/26 08:44': { ar: 'BDF-RMS Radiology 12/04/26 08:44', en: 'BDF-RMS Radiology 12/04/26 08:44' }
+      };
+
+      function convertText(txt) {
+        var t = txt;
+        var translations = {};
+        Object.keys(dict).forEach(function (key) {
+          translations[key] = dict[key][lang];
+          translations[dict[key].ar] = dict[key][lang];
+        });
+        var trimmed = t.trim();
+        if (translations.hasOwnProperty(trimmed)) {
+          t = t.replace(trimmed, translations[trimmed]);
+        }
+        t = t.replace(/<<\s*Previous\s*\|?/ig, lang === 'ar' ? 'السابق <<' : '<< Previous');
+        t = t.replace(/\|?\s*Next\s*>>/ig, lang === 'ar' ? 'التالي >>' : 'Next >>');
+        t = t.replace(/Image\s+(\d+)\s+of\s+(\d+)/ig, function (_, a, b) {
+          return lang === 'ar' ? 'الصورة ' + a + ' من ' + b : 'Image ' + a + ' of ' + b;
+        });
+        return t;
+      }
+
+      function walk(node) {
+        if (node.nodeType === 3) {
+          var original = node.nodeValue;
+          var converted = convertText(original);
+          if (converted !== original) node.nodeValue = converted;
+        } else if (node.nodeType === 1 && !['SCRIPT', 'STYLE'].includes(node.tagName)) {
+          Array.prototype.forEach.call(node.childNodes, walk);
+        }
+      }
+      walk(document.body);
+
+      var buttons = document.querySelectorAll('.top-actions button');
+      buttons.forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+    }
+
+    function enhanceSingleImagePages() {
+      var img = document.querySelector('img.texttop, img[alt="Image"]');
+      if (!img) return;
+
+      var pageText = document.body.textContent || '';
+      var countMatch = pageText.match(/Image\s+(\d+)\s+of\s+(\d+)/i);
+      var current = countMatch ? parseInt(countMatch[1], 10) : 1;
+      var total = countMatch ? parseInt(countMatch[2], 10) : 1;
+
+      var links = Array.prototype.slice.call(document.querySelectorAll('a'));
+      var prevLink = links.find(function (a) { return /Previous/i.test(a.textContent); });
+      var nextLink = links.find(function (a) { return /Next/i.test(a.textContent); });
+
+      var oldTable = img.closest('table');
+      while (oldTable && oldTable.parentElement && oldTable.parentElement.tagName !== 'TD' && oldTable.parentElement.tagName !== 'BODY') {
+        oldTable = oldTable.parentElement.closest('table') || oldTable;
+        break;
+      }
+      var host = oldTable && oldTable.parentElement ? oldTable.parentElement : img.parentElement;
+
+      if (oldTable) oldTable.classList.add('enhanced-hidden');
+
+      var viewer = document.createElement('div');
+      viewer.className = 'image-viewer';
+
+      var toolbar = document.createElement('div');
+      toolbar.className = 'image-toolbar';
+
+      var navLeft = document.createElement('div');
+      navLeft.className = 'toolbar-group';
+
+      var prevA = document.createElement('a');
+      prevA.className = 'nav-btn prev-btn';
+      prevA.href = prevLink ? prevLink.getAttribute('href') : '#';
+      prevA.innerHTML = '&#8592; <span data-i18n="Previous">Previous</span>';
+      if (!prevLink) prevA.style.visibility = 'hidden';
+
+      var nextA = document.createElement('a');
+      nextA.className = 'nav-btn next-btn';
+      nextA.href = nextLink ? nextLink.getAttribute('href') : '#';
+      nextA.innerHTML = '<span data-i18n="Next">Next</span> &#8594;';
+      if (!nextLink) nextA.style.visibility = 'hidden';
+
+      var count = document.createElement('div');
+      count.className = 'viewer-count';
+      count.textContent = 'Image ' + current + ' of ' + total;
+
+      var tools = document.createElement('div');
+      tools.className = 'toolbar-group';
+
+      var zin = document.createElement('button');
+      zin.type = 'button';
+      zin.className = 'zoom-btn';
+      zin.textContent = '+';
+
+      var zout = document.createElement('button');
+      zout.type = 'button';
+      zout.className = 'zoom-btn';
+      zout.textContent = '−';
+
+      var reset = document.createElement('button');
+      reset.type = 'button';
+      reset.className = 'zoom-btn';
+      reset.textContent = '100%';
+
+      tools.appendChild(zin);
+      tools.appendChild(zout);
+      tools.appendChild(reset);
+
+      navLeft.appendChild(prevA);
+      navLeft.appendChild(count);
+      navLeft.appendChild(nextA);
+
+      toolbar.appendChild(navLeft);
+      toolbar.appendChild(tools);
+
+      var stage = document.createElement('div');
+      stage.className = 'image-stage';
+      var bigImg = img.cloneNode(true);
+      bigImg.removeAttribute('width');
+      bigImg.removeAttribute('height');
+      bigImg.style.maxWidth = '100%';
+      bigImg.style.maxHeight = '100%';
+      stage.appendChild(bigImg);
+
+      var hint = document.createElement('div');
+      hint.className = 'viewer-hint';
+      hint.textContent = 'Click the image or use the buttons to zoom in and out.';
+
+      var strip = document.createElement('div');
+      strip.className = 'thumb-strip';
+
+      for (var i = 1; i <= total; i++) {
+        var n = String(i).padStart(6, '0');
+        var a = document.createElement('a');
+        a.href = 'im' + n + '.htm#imp';
+        if (i === current) a.classList.add('active');
+        var t = document.createElement('img');
+        t.loading = 'lazy';
+        t.src = 'im' + n + '.jpg';
+        t.alt = 'Image ' + i;
+        a.appendChild(t);
+        strip.appendChild(a);
+      }
+
+      viewer.appendChild(toolbar);
+      viewer.appendChild(stage);
+      viewer.appendChild(hint);
+      viewer.appendChild(strip);
+      host.appendChild(viewer);
+
+      var scale = 1;
+      function setScale(s) {
+        scale = Math.max(0.5, Math.min(6, s));
+        bigImg.style.transform = 'scale(' + scale + ')';
+      }
+      zin.addEventListener('click', function () { setScale(scale + 0.2); });
+      zout.addEventListener('click', function () { setScale(scale - 0.2); });
+      reset.addEventListener('click', function () { setScale(1); });
+      bigImg.addEventListener('click', function () { setScale(scale >= 2 ? 1 : scale + 0.5); });
+      stage.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        setScale(scale + (e.deltaY < 0 ? 0.15 : -0.15));
+      }, { passive: false });
+    }
+
+    function enhanceMobileGrids() {
+      // On overview / study pages where many linked images appear, make them look like a grid on small screens.
+      var allImageLinks = Array.prototype.slice.call(document.querySelectorAll('a img'));
+      if (!allImageLinks.length) return;
+      var containers = [];
+      allImageLinks.forEach(function (img) {
+        var a = img.parentElement;
+        if (!a || !a.getAttribute('href')) return;
+        if (/im\d+\.htm/i.test(a.getAttribute('href'))) {
+          var td = a.closest('td');
+          if (td && containers.indexOf(td.parentElement) === -1) containers.push(td.parentElement);
+        }
+      });
+    }
+  </script>
 
 </head>
 
@@ -543,9 +630,8 @@ function enhanceMobileGrids(){
               <p>Image Report<br /></p>
             </td>
 
-            <td width="10%" align="right" valign="middle"><img src=
-            "../../../ihe_pdi/res/jx_inst.gif" width="40" height=
-            "40" border="0" alt="JiveX" /></td>
+            <td width="10%" align="right" valign="middle"><img src="../../../ihe_pdi/res/jx_inst.gif" width="40"
+                height="40" border="0" alt="JiveX" /></td>
           </tr>
         </table>
       </td>
@@ -564,8 +650,8 @@ function enhanceMobileGrids(){
                     <td>Patient:</td>
 
                     <td><b>ALJALAHMA SUAD MUBARAK ,
-                    *1964-08-04</b>, <font class=
-                    "nobr">PID: 640801587</font></td>
+                        *1964-08-04</b>, <font class="nobr">PID: 640801587</font>
+                    </td>
                   </tr>
 
                   <tr>
@@ -589,7 +675,27 @@ function enhanceMobileGrids(){
 
                 <h3>Report</h3>
 
-                <p>Medical Imaging Department<p>Final Report <p><p>Clinical History: <p>61-year-old female of Lumbar and other intervertebral disc disorders with radiculopathy (G55.1*), presented with . Reason for Examination:  History LBP + Lt sciatica<p><p>Interpretation:<p>Mri Lumbar Spine<p><p>Findings:<p>#### Lumbar spondylo-degenerative changes showing multilevel mild osteophytic formations, degeneration of inter-vertebral discs , evident with reduced T2 signals and narrowing of L4-L4 disc height & related mild subchondral degenerative marrow changes noted (Modic type II). #### L4-5 left posterolateral disc protrusion on top of mild diffuse bulge seen with mild compression of the thecal sac and corresponding left nerve root. Evidence of left sided laminectomy at L4-5, with suspicious scarring in the left lateral recess #### Minimal L3-4 posterior disc bulge., slightly indenting ventral aspect of thecal sac. #### Mild L5-S1 posterior disc bulge, more towards the left side., slightly encroaching on left neural recess with minimal thecal sac indentation #### Multilevel mild degenerative facet arthropathy seen. #### Straightening of the lumbar curve with preserved alignment., Maintained vertebral bodies height.  No evidence of fracture or subluxation. #### Normal signal intensity of the scanned part of the spinal cord. The conus medullaris is unremarkable. #### No paraspinal soft tissue abnormalities detected.<p><p>Conclusion:<p>#### Spondylo-degenerative changes of lumbar spine with multilevel degenerative disc disease (most significant at L4-5), as described. #### Evidence of left sided laminectomy at L4-5, with suspicious scarring in the left lateral recess<p><p>Recommendation:<p><p><p>Dr. Alaa Abdelgaber Ayad<p><p><p>Notes* Radiology Department will not be held responsible for any unsigned Reports.<p><p><p>BDF-RMS Radiology 12/04/26 08:44</p>
+                <p>Medical Imaging Department</p>
+                <p>Final Report</p>
+                <p>Clinical History:</p>
+                <p>61-year-old female of Lumbar and other intervertebral disc disorders with radiculopathy (G55.1*), presented with . Reason for Examination: History LBP + Lt sciatica</p>
+                <p>Interpretation:</p>
+                <p>Mri Lumbar Spine</p>
+                <p>Findings:</p>
+                <p>Lumbar spondylo-degenerative changes showing multilevel mild osteophytic formations, degeneration of inter-vertebral discs, evident with reduced T2 signals and narrowing of L4-L4 disc height & related mild subchondral degenerative marrow changes noted (Modic type II).</p>
+                <p>L4-5 left posterolateral disc protrusion on top of mild diffuse bulge seen with mild compression of the thecal sac and corresponding left nerve root. Evidence of left sided laminectomy at L4-5, with suspicious scarring in the left lateral recess.</p>
+                <p>Minimal L3-4 posterior disc bulge, slightly indenting ventral aspect of thecal sac.</p>
+                <p>Mild L5-S1 posterior disc bulge, more towards the left side, slightly encroaching on left neural recess with minimal thecal sac indentation.</p>
+                <p>Multilevel mild degenerative facet arthropathy seen.</p>
+                <p>Straightening of the lumbar curve with preserved alignment. Maintained vertebral bodies height. No evidence of fracture or subluxation.</p>
+                <p>Normal signal intensity of the scanned part of the spinal cord. The conus medullaris is unremarkable.</p>
+                <p>No paraspinal soft tissue abnormalities detected.</p>
+                <p>Conclusion:</p>
+                <p>Spondylo-degenerative changes of lumbar spine with multilevel degenerative disc disease (most significant at L4-5), as described. Evidence of left sided laminectomy at L4-5, with suspicious scarring in the left lateral recess.</p>
+                <p>Recommendation:</p>
+                <p>Dr. Alaa Abdelgaber Ayad</p>
+                <p>Notes* Radiology Department will not be held responsible for any unsigned Reports.</p>
+                <p>BDF-RMS Radiology 12/04/26 08:44</p>
               </div>
             </td>
           </tr>
@@ -604,25 +710,25 @@ function enhanceMobileGrids(){
             <td>
               <hr width="100%" noshade="noshade" />
 
-              <table summary="" width="100%" border="0"
-              cellspacing="10">
+              <table summary="" width="100%" border="0" cellspacing="10">
                 <tr>
-                  <td align="left" valign="top"><img src=
-                  "../../../ihe_pdi/res/jx_jivex.gif" width="40"
-                  height="40" border="0" alt="JiveX" /></td>
+                  <td align="left" valign="top"><img src="../../../ihe_pdi/res/jx_jivex.gif" width="40" height="40"
+                      border="0" alt="JiveX" /></td>
 
                   <td align="left" valign="middle">
-                    <p><font size="1">JiveX Image Report. This
-                    report was generated with JiveX Review. &copy;
-                    Copyright VISUS Health IT GmbH,
-                    Germany. JiveX &reg; is an internationally
-                    registered trademark of VISUS Health IT GmbH. 
-					VISUS Health IT GmbH assumes no
-                    liability whether for the content of this
-                    report nor for any incidential or consequential
-                    damages of the usage of this report! ---
-                    <a href=
-                    "http://www.visus.com">www.visus.com</a></font></p>
+                    <p>
+                      <font size="1">JiveX Image Report. This
+                        report was generated with JiveX Review. &copy;
+                        Copyright VISUS Health IT GmbH,
+                        Germany. JiveX &reg; is an internationally
+                        registered trademark of VISUS Health IT GmbH.
+                        VISUS Health IT GmbH assumes no
+                        liability whether for the content of this
+                        report nor for any incidential or consequential
+                        damages of the usage of this report! ---
+                        <a href="http://www.visus.com">www.visus.com</a>
+                      </font>
+                    </p>
                   </td>
                 </tr>
               </table>
@@ -633,4 +739,5 @@ function enhanceMobileGrids(){
     </tr>
   </table>
 </body>
+
 </html>
