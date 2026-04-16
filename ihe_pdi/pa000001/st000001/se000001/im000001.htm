@@ -252,7 +252,18 @@ td[bgcolor], tr[bgcolor], table[bgcolor]{
   overflow:auto;
   padding:18px;
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.02);
+  cursor:grab;
 }
+
+.image-stage.highlighted{
+  background: radial-gradient(circle at center, rgba(255,255,255,0.14), rgba(15,17,21,0.96) 55%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 0 55px rgba(255,255,255,0.18);
+}
+.zoom-btn.light-btn.active{
+  background: linear-gradient(135deg, #ffe28c, #ffcb46);
+  color: #1b1b1b;
+}
+
 .image-stage img{
   max-width:none;
   max-height:none;
@@ -485,9 +496,15 @@ function enhanceSingleImagePages(){
   reset.className = 'zoom-btn';
   reset.textContent = '100%';
 
+  var light = document.createElement('button');
+  light.type = 'button';
+  light.className = 'zoom-btn light-btn';
+  light.textContent = 'Light';
+
   tools.appendChild(zin);
   tools.appendChild(zout);
   tools.appendChild(reset);
+  tools.appendChild(light);
 
   navLeft.appendChild(prevA);
   navLeft.appendChild(count);
@@ -501,13 +518,13 @@ function enhanceSingleImagePages(){
   var bigImg = img.cloneNode(true);
   bigImg.removeAttribute('width');
   bigImg.removeAttribute('height');
-  bigImg.style.maxWidth = '100%';
-  bigImg.style.maxHeight = '100%';
+  bigImg.style.maxWidth = 'none';
+  bigImg.style.maxHeight = 'none';
   stage.appendChild(bigImg);
 
   var hint = document.createElement('div');
   hint.className = 'viewer-hint';
-  hint.textContent = 'Click the image or use the buttons to zoom in and out.';
+  hint.textContent = 'Click the image or use the buttons to zoom in and out. Drag the image to move it after zooming.';
 
   var strip = document.createElement('div');
   strip.className = 'thumb-strip';
@@ -532,17 +549,93 @@ function enhanceSingleImagePages(){
   host.appendChild(viewer);
 
   var scale = 1;
+  var naturalWidth = 0;
+  var naturalHeight = 0;
+
+  function updateScale(){
+    if(naturalWidth && naturalHeight){
+      bigImg.style.width = (naturalWidth * scale) + 'px';
+      bigImg.style.height = (naturalHeight * scale) + 'px';
+    } else {
+      bigImg.style.transform = 'scale(' + scale + ')';
+    }
+  }
+
   function setScale(s){
     scale = Math.max(0.5, Math.min(6, s));
-    bigImg.style.transform = 'scale(' + scale + ')';
+    updateScale();
+    if(stage.scrollWidth > stage.clientWidth){
+      stage.scrollLeft = (stage.scrollWidth - stage.clientWidth) / 2;
+    }
+    if(stage.scrollHeight > stage.clientHeight){
+      stage.scrollTop = (stage.scrollHeight - stage.clientHeight) / 2;
+    }
   }
+
+  function refreshNaturalSize(){
+    naturalWidth = bigImg.naturalWidth || bigImg.width;
+    naturalHeight = bigImg.naturalHeight || bigImg.height;
+    if(naturalWidth && naturalHeight){
+      updateScale();
+    }
+  }
+
+  bigImg.addEventListener('load', refreshNaturalSize);
+  if(bigImg.complete){
+    refreshNaturalSize();
+  }
+
   zin.addEventListener('click', function(){ setScale(scale + 0.2); });
   zout.addEventListener('click', function(){ setScale(scale - 0.2); });
   reset.addEventListener('click', function(){ setScale(1); });
+  light.addEventListener('click', function(){ toggleLight(); });
   bigImg.addEventListener('click', function(){ setScale(scale >= 2 ? 1 : scale + 0.5); });
-  stage.addEventListener('wheel', function(e){
+  function toggleLight(){
+    var active = stage.classList.toggle('highlighted');
+    light.classList.toggle('active', active);
+    light.textContent = active ? 'Light On' : 'Light';
+  }
+
+  var isDragging = false;
+  var dragStartX = 0;
+  var dragStartY = 0;
+  var scrollStartX = 0;
+  var scrollStartY = 0;
+
+  stage.addEventListener('pointerdown', function(e){
+    if(e.button !== 0) return;
+    isDragging = true;
+    stage.setPointerCapture(e.pointerId);
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    scrollStartX = stage.scrollLeft;
+    scrollStartY = stage.scrollTop;
+    stage.style.cursor = 'grabbing';
     e.preventDefault();
-    setScale(scale + (e.deltaY < 0 ? 0.15 : -0.15));
+  });
+
+  stage.addEventListener('pointermove', function(e){
+    if(!isDragging) return;
+    stage.scrollLeft = scrollStartX - (e.clientX - dragStartX);
+    stage.scrollTop = scrollStartY - (e.clientY - dragStartY);
+  });
+
+  stage.addEventListener('pointerup', function(){
+    if(!isDragging) return;
+    isDragging = false;
+    stage.style.cursor = 'grab';
+  });
+  stage.addEventListener('pointercancel', function(){
+    if(!isDragging) return;
+    isDragging = false;
+    stage.style.cursor = 'grab';
+  });
+
+  stage.addEventListener('wheel', function(e){
+    if(e.ctrlKey){
+      e.preventDefault();
+      setScale(scale + (e.deltaY < 0 ? 0.15 : -0.15));
+    }
   }, {passive:false});
 }
 
@@ -686,3 +779,4 @@ function enhanceMobileGrids(){
   </table>
 </body>
 </html>
+

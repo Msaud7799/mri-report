@@ -750,13 +750,13 @@
       var bigImg = img.cloneNode(true);
       bigImg.removeAttribute('width');
       bigImg.removeAttribute('height');
-      bigImg.style.maxWidth = '100%';
-      bigImg.style.maxHeight = '100%';
+      bigImg.style.maxWidth = 'none';
+      bigImg.style.maxHeight = 'none';
       stage.appendChild(bigImg);
 
       var hint = document.createElement('div');
       hint.className = 'viewer-hint';
-      hint.textContent = 'Click the image or use the buttons to zoom in and out.';
+      hint.textContent = 'Click the image or use the buttons to zoom in and out. Drag the image to move it after zooming.';
 
       var strip = document.createElement('div');
       strip.className = 'thumb-strip';
